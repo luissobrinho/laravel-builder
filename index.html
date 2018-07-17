@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Laravel Builder (Crud Maker)</title>
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+</head>
+
+<body>
+  <!-- As a heading -->
+  <nav class="navbar navbar-light fixed-top bg-light">
+    <span class="navbar-brand mb-0 h1">Laravel Builder (Crud Maker)</span>
+  </nav>
+  <div class="container-fluid" style="margin-top: 65px;">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="card">
+          <div class="card-body">
+            <div>
+              <div class="form-group">
+                <label for="model">Name Class</label>
+                <input type="text" class="form-control" id="model" placeholder="Model">
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="--api" id="api">
+                <label class="form-check-label" for="api">
+                  API
+                </label>
+              </div>
+              <div class="form-check">
+                <input checked class="form-check-input" type="checkbox" value="--ui=bootstrap" id="bootstrap">
+                <label class="form-check-label" for="bootstrap">
+                  Bootstrap
+                </label>
+              </div>
+              <div class="form-check">
+                <input checked class="form-check-input" type="checkbox" value="--serviceOnly" id="serviceOnly">
+                <label class="form-check-label" for="serviceOnly">
+                  Service Only
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="--withBaseService" id="withBaseService">
+                <label class="form-check-label" for="withBaseService">
+                  With Base Service
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="--withFacade" id="withFacade">
+                <label class="form-check-label" for="withFacade">
+                  With Facade
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="--withoutViews" id="withoutViews">
+                <label class="form-check-label" for="withoutViews">
+                  Without Views
+                </label>
+              </div>
+              <div class="form-check">
+                <input checked class="form-check-input" type="checkbox" value="--migration" id="migration">
+                <label class="form-check-label" for="migration">
+                  Migration
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="--relationships" id="relationships">
+                <label class="form-check-label" for="relationships">
+                  Relationships
+                </label>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="card">
+          <div class="card-body">
+            <div class="form-group">
+              <label for="attribute-name">Attributes</label>
+              <input type="text" class="form-control" id="attribute-name" placeholder="id">
+            </div>
+            <div class="form-group">
+              <label for="attribute-type">Type select</label>
+              <select class="form-control" id="attribute-type">
+                <option value="bigIncrements">Big Increments</option>
+                <option selected value="increments">Increments</option>
+                <option value="bigInteger">BigInteger</option>
+                <option value="binary">Binary</option>
+                <option value="boolean">Boolean</option>
+                <option value="char">Char</option>
+                <option value="date">Date</option>
+                <option value="dateTime">Date Time</option>
+                <option value="decimal">Decimal</option>
+                <option value="double">Double</option>
+                <option value="enum">Enum</option>
+                <option value="float">Float</option>
+                <option value="integer">Integer</option>
+                <option value="ipAddress">IP Address</option>
+                <option value="json">JSON</option>
+                <option value="jsonb">JSONB</option>
+                <option value="longText">Long Text</option>
+                <option value="macAddress">Mac Address</option>
+                <option value="mediumInteger">Medium Integer</option>
+                <option value="mediumText">Medium Text</option>
+                <option value="morphs">Morphs</option>
+                <option value="smallInteger">Small Integer</option>
+                <option value="string">String</option>
+                <option value="text">Text</option>
+                <option value="time">Time</option>
+                <option value="tinyInteger">Tiny Integer</option>
+                <option value="timestamp">Timestamp</option>
+                <option value="uuid">UUID</option>
+              </select>
+            </div>
+            <button type="button" class="btn btn-primary">Add Attribute</button>
+          </div>
+        </div>
+        <div class="card col-sm-12">
+            <div class="card-body">
+                <button class="btn btn-primary btn-block">Execut Command</button>
+            </div>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <div class="card col-ms-12" style="margin-bottom: 15px;">
+      <div class="card-header">
+        List Attribute
+      </div>
+      <ul class="list-group">
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          Attribute: Type
+          <span class="badge badge-danger badge-pill">-</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          Attribute: Type
+          <span class="badge badge-danger badge-pill">-</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          Attribute: Type
+          <span class="badge badge-danger badge-pill">-</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</body>
+
+</html>
