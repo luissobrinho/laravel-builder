@@ -1,5 +1,10 @@
-const { app, BrowserWindow, Menu } = require('electron')
-let jQuery  = require("jquery")
+const electron = require('electron')
+const app = electron.app
+const Menu = electron.Menu
+const BrowserWindow = electron.BrowserWindow
+const url = require('url')
+const path = require('path')
+// let jQuery  = require("jquery")
 //const $window = window;
 
 
@@ -13,14 +18,17 @@ function createWindow() {
     width: 800,
     height: 600,
     webPreferences: {
-      webSecurity: false,
-      nodeIntegration: false,
-      preload: './app.js'
+      webSecurity: true,
+      nodeIntegration: true,
     }
   })
 
   // e carrega index.html do app.
-  win.loadFile('index.html')
+  win.loadURL(url.format({
+    pathname: path.join(__dirname, 'index.html'),
+    protocol: 'file',
+    slashes: true
+  }))
 
   // Open the DevTools.
   win.webContents.openDevTools()
@@ -91,5 +99,4 @@ const template = [
 //     }
 //   ]
 // }
-const menu = Menu.buildFromTemplate(template)
-Menu.setApplicationMenu(menu)
+Menu.setApplicationMenu(Menu.buildFromTemplate(template))
