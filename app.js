@@ -1,23 +1,30 @@
 console.log('Loading app.js')
-
 window.document.addEventListener('DOMContentLoaded', () => {
+    const { ipcRenderer } = require('electron')
     console.log('DOMContentLoaded Complet')
-    const ipc = require('electron').ipcRenderer
-    const os = require('os')
-
+    if(! window.localStorage.getItem('path-project') ) window.localStorage.setItem('path-project', '')
+    title();
     var $this = {
         path: ''
     };
 
-    const selectDirBtn = window.document.getElementById('select-directory')
+    const selectDirBtn = document.getElementById('select-directory')
 
     selectDirBtn.addEventListener('click', function (event) {
-        console.log('Click on selectDirBtn', ipc);
-        ipc.send('open-file-dialog')
+        console.log('Click on selectDirBtn', ipcRenderer, event);
+        ipcRenderer.send('open-file-dialog')
     })
 
-    ipc.on('selected-directory', function (event, path) {
-        window.document.getElementById('selected-file').innerHTML = `${path}`
+    ipcRenderer.on('selected-directory', function (event, path) {
+        document.getElementById('selected-file').innerHTML = `${path}`
+        window.localStorage.setItem('path-project', path)
+        title();
     })
+
+
+    function title() {
+        document.getElementById('title').innerHTML += ' ' + window.localStorage.getItem('path-project');
+    }
+
 
 })

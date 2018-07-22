@@ -1,25 +1,31 @@
 const electron = require('electron')
 const app = electron.app
 const Menu = electron.Menu
+const shell = electron.shell;
 const BrowserWindow = electron.BrowserWindow
 const url = require('url')
 const path = require('path')
+require('./render')
+
 // let jQuery  = require("jquery")
-//const $window = window;
 
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
-let win
+let win;
+let winView;
 
 function createWindow() {
+
   // Criar uma janela de navegação.
   win = new BrowserWindow({
     width: 800,
     height: 600,
     webPreferences: {
+      contextIsolation: false,
       webSecurity: true,
       nodeIntegration: true,
+      preload: './render.js'
     }
   })
 
@@ -31,7 +37,7 @@ function createWindow() {
   }))
 
   // Open the DevTools.
-  win.webContents.openDevTools()
+  // win.webContents.openDevTools()
 
   // Emitido quando a janela é fechada.
   win.on('closed', () => {
@@ -70,8 +76,18 @@ const template = [
   {
     label: 'Application',
     submenu: [
-      { label: 'Create' },
-      { label: 'Crud Maker' }
+      { 
+        label: 'Create',
+        click() {
+          win.loadURL(path.join('file://', __dirname, '/index.html'))
+        } 
+      },
+      { 
+        label: 'Crud Maker',
+        click() {
+          win.loadURL(path.join('file://', __dirname, '/crudmaker.html'))
+        }
+      }
     ]
   },
   {
